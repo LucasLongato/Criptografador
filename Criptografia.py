@@ -94,15 +94,12 @@ def encrypt(message, chave):
     encrypted = ''
     for letter in message:
         encrypted += get_code(letter)
-    # ROTATE THE TEXT
     encrypted = encrypted[chave:] + encrypted[:chave]
     return encrypted
 
 def decrypt(message, chave):
     decrypted = ''
-    # ROTATE THE TEXT
     message = message[-chave:] + message[:-chave]
-    # Divide the message into letter codes of size 4
     codes = [message[i:i+4] for i in range(0, len(message), 4)]
     for code in codes:
         letter = get_letter(code)
